@@ -46,8 +46,10 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updatePhoto = async(req, res) => {
     const { id } = req.params;
     const photo = await Photo.findByIdAndUpdate(id, { ...req.body.photo });
-    const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    photo.images.push(...imgs);
+    if (req.files.length > 0) {
+        const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
+        photo.images.push(...imgs);
+    }
     await photo.save();
     if(req.body.deleteImages) {
         for(let filename of req.body.deleteImages) {
@@ -61,7 +63,10 @@ module.exports.updatePhoto = async(req, res) => {
 
 module.exports.deletePhoto = async (req, res) => {
     const { id } = req.params;
-    await Photo.findByIdAndDelete(id);
+    const photo = await Photo.findByIdAndDelete(id);
+    for(let image of photo.images) {
+        await cloudinary.uploader.destroy(image.filename);
+    }
     req.flash('success', 'Sucessfully deleted image');
     res.redirect('/photography');
 };
