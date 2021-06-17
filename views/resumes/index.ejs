@@ -1,0 +1,20 @@
+<% layout('layout/boilerplate')%>
+
+<h1>All Resumés</h1>
+
+<% for(let resume of resumes){ %>
+<div class="card mb-3">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%= resume.name %></h5>
+                <p class="card-text"><%= resume.phoneNumber %></p>
+                <p class="card-text">
+                    <small class="text-muted"><%= resume.email %></small>
+                </p>
+                <a href="/resumes/<%= resume._id %>" class="btn btn-primary">View <%= resume.name %>'s resumé </a>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>  

@@ -1,0 +1,19 @@
+<% layout('layout/boilerplate')%>
+
+    <h1>Photography</h1>
+    <% for(let photo of photos){ %>
+      <div class="card mb-3">
+          <div class="row">
+              <div class="col-md-8">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= photo.name %></h5>
+                      <p class="card-text"><%= photo.description %></p>
+                      <p class="card-text">
+                          <small class="text-muted"><%= photo.author %></small>
+                      </p>
+                      <a href="/photos/<%= photo._id %>" class="btn btn-primary">View <%= photo.name %></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <% } %>  

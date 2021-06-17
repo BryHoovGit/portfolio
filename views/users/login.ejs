@@ -1,0 +1,38 @@
+<% layout('layout/boilerplate')%>
+
+<div class="container justify-content-center align-items-center mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <div class="card shadow">
+                <img src="https://images.unsplash.com/photo-1533873984035-25970ab07461?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <form action="/login" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 mb-2">
+                        <button class="btn btn-success">Login</button>
+                        </div>
+                    </form>
+                    <form action="/register" method="GET" class="validated-form" novalidate>
+                        <div class="d-grid gap-2">
+                            <button id="register" class="btn btn-secondary">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

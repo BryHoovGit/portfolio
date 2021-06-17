@@ -1,0 +1,20 @@
+<% layout('layout/boilerplate')%>
+
+<h1>Graphic Design</h1>
+
+<% for(let design of designs){ %>
+    <div class="card mb-3">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><%= design.name %></h5>
+                    <p class="card-text"><%= design.description %></p>
+                    <p class="card-text">
+                        <small class="text-muted"><%= design.author %></small>
+                    </p>
+                    <a href="/designs/<%= design._id %>" class="btn btn-primary">View <%= design.name %></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>  

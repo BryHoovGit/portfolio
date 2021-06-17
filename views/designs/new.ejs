@@ -1,0 +1,55 @@
+<% layout('layout/boilerplate')%>
+
+<h1>New Design</h1>
+    <form action="/designs" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="title" class="form-label">Design Title</label>
+          <input type="text" class="form-control" id="title"  name="design[title]" aria-describedby="titleHelp">
+        </div>
+        <div class="valid-feedback">
+          Looks good!
+      </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Design Description</label>
+            <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" name="design[description]">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" aria-describedby="dateHelp" name="design[date]">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+          <label for="category">Category</label>
+          <div class="form-check" name="category">
+            <input class="form-check-input" type="radio" name="commercial" id="commercial">
+            <label class="form-check-label" for="commercial">
+              Commercial
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="commission" id="commission" checked>
+            <label class="form-check-label" for="commission">
+              Commission
+            </label>
+          </div>
+        </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Add Design</label>
+          <input class="form-control" type="file" id="image" multiple name="image">
+      </div>
+      <div class="valid-feedback">
+        Looks good!
+    </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      
+      

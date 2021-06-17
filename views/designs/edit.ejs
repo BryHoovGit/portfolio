@@ -1,0 +1,41 @@
+<% layout('layout/boilerplate')%>
+
+<h1>Edit Design</h1>
+    <form action="/designs" novalidate method="POST" class="validated-form">
+        <div class="mb-3">
+          <label for="title" class="form-label">Design Title</label>
+          <input type="text" class="form-control" id="title"  name="design[title]" value="<%= design.title %>" aria-describedby="titleHelp">
+        </div>
+        <div class="valid-feedback">
+          Looks good!
+      </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Design Description</label>
+            <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" name="design[description]" value="<%= design.description %>">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" aria-describedby="dateHelp" name="design[date]" value="<%= design.date %>">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" name="design[category]" id="category" value="<%= design.category %>">
+        <option value="comission">Commission</option>
+        <option value="commercial">Commercial</option>
+        </select>
+        </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload Design</label>
+            <input class="form-control" type="file" id="formFile">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>

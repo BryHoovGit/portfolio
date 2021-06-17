@@ -1,0 +1,31 @@
+<% layout('layout/boilerplate')%>
+
+<h1>Edit Photo</h1>
+    <form action="/photography" novalidate method="POST" class="validated-form">
+        <div class="mb-3">
+          <label for="title" class="form-label">Image Title</label>
+          <input type="text" class="form-control" id="title"  name="photo[title]" aria-describedby="titleHelp"  value="<%= photo.title %> ">
+        </div>
+        <div class="valid-feedback">
+          Looks good!
+      </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Photo Location</label>
+            <input type="text" class="form-control" id="location" aria-describedby="locationHelp" name="photo[location]"  value="<%= photo.location %>">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Image Info</label>
+            <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" name="photo[description]" value="<%= photo.description %> ">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Edit Images</label>
+          <input class="form-control" type="file" id="image" multiple name="image">
+      </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
