@@ -22,15 +22,8 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createDesign = async(req, res, next) => {
     const design = new Design(req.body.design);
-    const categoryCommercial = document.querySelector('#commercial')
     design.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     design.author = req.user._id;
-    if(!categoryCommercial){
-        
-    } else {
-        
-    }
-    console.log(categoryCommerical, design)
     await design.save();
     req.flash('success', 'Successfully created a new design!');
     res.redirect(`/designs/${design._id}`);
@@ -41,9 +34,8 @@ module.exports.showDesign = async (req, res) => {
         path: 'designs',
         populate: {
             path: 'author',
-            path: 'category'
         }
-    }).populate('author').populate('category');
+    }).populate('author');
     if(!design) {
         req.flash('error', 'Cannot find that design!');
         return res.redirect('/designs');

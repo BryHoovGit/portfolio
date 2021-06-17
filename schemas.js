@@ -22,6 +22,7 @@ module.exports.designSchema = Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),
         date: Joi.date().required(),
+        category: Joi.string()
     }).required(),
     deleteImages: Joi.array()
 });

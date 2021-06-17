@@ -2,12 +2,11 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const catchAsync = require('../utils/catchAsync');
 const designs = require('../controllers/designs');
-const { validateDesign, isLoggedIn, isDesignAuthor } = require('../middleware');
+const { validateDesign, isLoggedIn, isDesignAuthor, storageSelect } = require('../middleware');
 const multer = require('multer');
 const { designStorage, commercialStorage, commissionStorage } = require('../cloudinary')
+
 const upload = multer({ storage: designStorage });
-const uploadCommercial = multer({storage: commercialStorage});
-const uploadCommission = multer({storage: commissionStorage});
 
 const Design = require('../models/design');
 
@@ -17,11 +16,11 @@ router.route('/')
 
 router.route('/commercial')
     .get(catchAsync(designs.commercial))
-    .post(isLoggedIn, uploadCommercial.array('image'), validateDesign, catchAsync(designs.createDesign))
+    
 
 router.route('/commissions')
     .get(catchAsync(designs.commissions))
-    .post(isLoggedIn, uploadCommission.array('image'), validateDesign, catchAsync(designs.createDesign))
+    
 
 router.get('/new', isLoggedIn, designs.renderNewForm)
 

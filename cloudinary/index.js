@@ -15,22 +15,6 @@ const designStorage = new CloudinaryStorage({
     }
 });
 
-const commissionStorage = new CloudinaryStorage({
-    cloudinary,
-    params: {
-        folder: 'Commissions',
-        allowedFormats: ['jpeg', 'png', 'jpg']
-    }
-});
-
-const commercialStorage = new CloudinaryStorage({
-    cloudinary,
-    params: {
-        folder: 'Commercial',
-        allowedFormats: ['jpeg', 'png', 'jpg']
-    }
-});
-
 const photographyStorage = new CloudinaryStorage({
     cloudinary,
     params: {
@@ -42,7 +26,5 @@ const photographyStorage = new CloudinaryStorage({
 module.exports = {
     cloudinary,
     designStorage,
-    photographyStorage,
-    commercialStorage,
-    commissionStorage
+    photographyStorage
 }

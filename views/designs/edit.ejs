@@ -1,7 +1,7 @@
 <% layout('layout/boilerplate')%>
 
 <h1>Edit Design</h1>
-    <form action="/designs" novalidate method="POST" class="validated-form">
+    <form action="/designs" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="title" class="form-label">Design Title</label>
           <input type="text" class="form-control" id="title"  name="design[title]" value="<%= design.title %>" aria-describedby="titleHelp">
@@ -18,24 +18,38 @@
         </div>
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" aria-describedby="dateHelp" name="design[date]" value="<%= design.date %>">
+            <input type="date" class="form-control" id="date" aria-describedby="dateHelp" name="design[date]" value="<%= design.title %>">
           </div>
           <div class="valid-feedback">
             Looks good!
         </div>
         <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
-        <select class="form-select" name="design[category]" id="category" value="<%= design.category %>">
-        <option value="comission">Commission</option>
-        <option value="commercial">Commercial</option>
-        </select>
+          <label for="category">Category</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="design[category]" id="category1" value="Commercial">
+            <label class="form-check-label" for="category1">
+              Commercial
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="design[category]" id="category2" value="Commission" checked>
+            <label class="form-check-label" for="category2">
+              Comission
+            </label>
+          </div>
         </div>
           <div class="valid-feedback">
             Looks good!
         </div>
         <div class="mb-3">
-            <label for="formFile" class="form-label">Upload Design</label>
-            <input class="form-control" type="file" id="formFile">
-          </div>
+          <label for="image" class="form-label">Add Design</label>
+          <input class="form-control" type="file" id="image" multiple name="image">
+      </div>
+      <div class="valid-feedback">
+        Looks good!
+    </div>
           <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+
+      
+      

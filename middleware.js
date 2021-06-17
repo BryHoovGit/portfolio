@@ -35,7 +35,7 @@ module.exports.isAuthor = async(req, res, next) => {
 
 module.exports.isPhotoAuthor = async(req, res, next) => {
     const { id } = req.params;
-    const photo = await Photo.findById(photoId);
+    const photo = await Photo.findById(id);
     if (!photo.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
         return res.redirect(`/photography/${id}`)
