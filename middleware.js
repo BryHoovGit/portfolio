@@ -1,8 +1,9 @@
-const { photoSchema, resumeSchema, designSchema } = require('./schemas');
+const { photoSchema, resumeSchema, designSchema, reviewSchema } = require('./schemas');
 const ExpressError = require('./utils/ExpressError');
 const Resume = require('./models/resume');
 const Photo = require('./models/photo');
 const Design = require('./models/design');
+const Review = require('./models/review');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -66,6 +67,26 @@ module.exports.validatePhoto = (req, res, next) => {
 module.exports.validateDesign = (req, res, next) => {
     const { error } = designSchema.validate(req.body);
     if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.isReviewAuthor = async (req, res, next) => {
+    const { id, reviewId } = req.params;
+    const review = await Review.findById(reviewId)
+    if(!review.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect('/')
+    }
+    next();
+}
+
+module.exports.validateReview = (req, res, next) => {
+    const { error } = reviewSchema.validate(req.body);
+    if(error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
     } else {

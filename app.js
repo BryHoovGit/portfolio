@@ -18,6 +18,8 @@ const userRoutes = require('./routes/users')
 const resumeRoutes = require('./routes/resumes');
 const photoRoutes = require('./routes/photos');
 const designRoutes = require('./routes/designs');
+const photoReviewRoutes = require('./routes/photoReviews');
+const designReviewRoutes = require('./routes/designRoutes');
 
 mongoose.connect('mongodb://localhost:27017/portfolio', {
     useNewUrlParser: true,
@@ -77,6 +79,8 @@ app.use('/', userRoutes)
 app.use('/resumes', resumeRoutes);
 app.use('/photography', photoRoutes);
 app.use('/designs', designRoutes);
+app.use('/designs/:id/reviews', designReviewRoutes);
+app.use('/photography/:id/reviews', photoReviewRoutes);
 
 app.get('/', (req, res) => {
     res.render('home');

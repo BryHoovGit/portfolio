@@ -31,7 +31,7 @@ module.exports.createDesign = async(req, res, next) => {
 
 module.exports.showDesign = async (req, res) => {
     const design = await (Design.findById(req.params.id)).populate({
-        path: 'designs',
+        path: 'reviews',
         populate: {
             path: 'author',
         }

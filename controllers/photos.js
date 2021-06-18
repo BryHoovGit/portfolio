@@ -21,7 +21,7 @@ module.exports.createPhoto = async(req, res, next) => {
 
 module.exports.showPhoto = async (req, res) => {
     const photo = await (Photo.findById(req.params.id)).populate({
-        path: 'photos',
+        path: 'reviews',
         populate: {
             path: 'author'
         }
