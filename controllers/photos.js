@@ -5,7 +5,7 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require('../cloudinary');
 
 module.exports.index = async (req, res) => {
-    const photos = await Photo.find({});
+    const photos = await Photo.find({}).populate('popupText');
     res.render('photography/index', { photos })
 };
 

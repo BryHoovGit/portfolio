@@ -1,5 +1,6 @@
 <% layout('layout/boilerplate')%>
-
+<div id="map" style="width: 100%; height: 500px"></div>
+<div class="container">
     <h1>Photography</h1>
     <a href="/photography/new" class="btn btn-primary mb-3">New Photo</a>
     <% for(let photo of photos){ %>
@@ -27,3 +28,11 @@
           </div>
       </div>
       <% } %>  
+    </div>
+
+      <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const photos = { features: <%- JSON.stringify(photos) %>}
+    </script>
+
+<script src="/javascripts/clusterMap.js"></script>

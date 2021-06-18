@@ -11,6 +11,8 @@ ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200');
 });
 
+const opts = { toJSON: { virtuals: true } };
+
 const PhotoSchema = new Schema({
     title: String,
     images: [ImageSchema],
@@ -37,6 +39,27 @@ const PhotoSchema = new Schema({
             ref: 'Review'
         }
     ]
+}, opts);
+
+PhotoSchema.virtual('properties.popUpMarkup').get(function () {
+    return `
+    <div class="card border-0 mt-2" style="width: 12rem;">
+        <img class="card-img-top" src="${this.images[0].url}"
+        <div class="card-body">
+            <br>
+            <h5 class="card-title text-center">${this.title}</h5>
+            <p class="card-body text-center text-truncate">${this.description}</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted text-center">${this.location}</li>
+            </ul>
+            <div class="card-body">
+                <form action="/campgrounds/${this._id}" class="text-center">
+                    <button class="btn btn-primary">View Campground</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    `
 });
 
 PhotoSchema.post('findOneAndDelete', async function (doc) {
