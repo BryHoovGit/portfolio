@@ -4,7 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const designs = require('../controllers/designs');
 const { validateDesign, isLoggedIn, isDesignAuthor, storageSelect } = require('../middleware');
 const multer = require('multer');
-const { designStorage, commercialStorage, commissionStorage } = require('../cloudinary')
+const { designStorage } = require('../cloudinary')
 
 const upload = multer({ storage: designStorage });
 

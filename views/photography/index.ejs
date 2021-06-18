@@ -1,10 +1,19 @@
 <% layout('layout/boilerplate')%>
 
     <h1>Photography</h1>
+    <a href="/photography/new" class="btn btn-primary mb-3">New Photo</a>
     <% for(let photo of photos){ %>
       <div class="card mb-3">
           <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-4">
+                <%if(photo.images.length) {%>
+                    <img class="img-fluid" alt="" src="<%=photo.images[0].url%>">
+                    <% }else {%>
+                    <img class="img-fluid" alt=""
+                        src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
+                    <% } %>
+                    </div>
+                    <div class="col-md-8">
                   <div class="card-body">
                       <h5 class="card-title"><%= photo.name %></h5>
                       <p class="card-text"><%= photo.description %></p>
@@ -13,6 +22,7 @@
                       </p>
                       <a href="/photography/<%= photo._id %>" class="btn btn-primary">View <%= photo.name %></a>
                   </div>
+                </div>
               </div>
           </div>
       </div>

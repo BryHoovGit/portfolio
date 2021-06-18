@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Review = ('./review');
 
 const ImageSchema = new Schema({
     url: String,
@@ -10,9 +11,20 @@ ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200');
 });
 
-const photoSchema = new Schema({
+const PhotoSchema = new Schema({
     title: String,
     images: [ImageSchema],
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
     description: String,
     location: String,
     author: {
@@ -27,4 +39,14 @@ const photoSchema = new Schema({
     ]
 });
 
-module.exports = mongoose.model('Photo', photoSchema);
+PhotoSchema.post('findOneAndDelete', async function (doc) {
+    if (doc) {
+        await Review.deleteMany({
+            _id: {
+                $in: doc.reviews
+            }
+        })
+    }
+})
+
+module.exports = mongoose.model('Photo', PhotoSchema);
