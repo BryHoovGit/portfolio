@@ -1,0 +1,76 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("https://images.unsplash.com/photo-1613864601020-ec7288d0a9db?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.1);
+}
+.cover-container {
+  max-width: 60vw;
+}
+
+.nav-link {
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover{
+    color: rgba(255,255,255,0.5);
+    border-bottom-color:rgba(255,255,255,0.5);
+}
+
+.nav-link.active {
+    color: white;
+    border-bottom-color:white;
+
+}
+
+.btn-secondary, .btn-secondary:hover{
+    color: #333;
+    text-shadow: none;
+}
+
+#splash-text {
+    color: white;
+    margin-top: 16rem;
+    justify-content: center;
+}
+
+#headshot {
+    margin-top: 13rem;
+}
+
+a {
+    color: white;
+}
+
+#gradient-header {
+    background: -webkit-linear-gradient(90deg, rgba(10,255,174,1) 0%, rgba(53,190,168,1) 47%, rgba(0,182,180,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 6rem;
+  padding-bottom: 1rem;
+}
+
+#footer-text {
+    margin-top: 1rem;
+}
+
+#framework-logos {
+    padding-left: 1.5em;
+}
+
+#navbar-brand {
+    margin-bottom: .5rem;
+    padding-right: 1rem;
+}
+
+#bulb {
+    margin-bottom: .3rem;
+    padding-left: 3rem;
+}

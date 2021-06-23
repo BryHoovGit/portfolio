@@ -1,7 +1,9 @@
 <% layout('layout/boilerplate')%>
 
 <h1>All Resumés</h1>
-
+<% if(currentUser) {%>
+    <a href="/resumes/new" class="btn btn-primary mb-3">New Resumé</a>
+    <% } %> 
 <% for(let resume of resumes){ %>
 <div class="card mb-3">
     <div class="row">

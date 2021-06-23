@@ -1,8 +1,9 @@
 <% layout('layout/boilerplate')%>
-<div id="map" style="width: 100%; height: 500px"></div>
-<div class="container">
-    <h1>Photography</h1>
+<h1>Photography</h1>
+<div id="map" style="width: 100%; height: 350px"></div>
+    <% if(currentUser && currentUser._id == "60d294755bcdbf2c28ce125d") {%>
     <a href="/photography/new" class="btn btn-primary mb-3">New Photo</a>
+    <% } %> 
     <% for(let photo of photos){ %>
       <div class="card mb-3">
           <div class="row">
@@ -13,22 +14,26 @@
                     <img class="img-fluid" alt=""
                         src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
                     <% } %>
-                    </div>
-                    <div class="col-md-8">
-                  <div class="card-body">
-                      <h5 class="card-title"><%= photo.name %></h5>
-                      <p class="card-text"><%= photo.description %></p>
-                      <p class="card-text">
-                          <small class="text-muted"><%= photo.author %></small>
-                      </p>
-                      <a href="/photography/<%= photo._id %>" class="btn btn-primary">View <%= photo.name %></a>
-                  </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= photo.name %>
+                  </h5>
+                <p class="card-text">
+                  <%= photo.description %>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">
+                      <%= photo.author %>
+                    </small>
+                </p>
+                <a href="/photography/<%= photo._id %>" class="btn btn-primary">View <%= photo.name %></a>
                 </div>
               </div>
+            </div>
           </div>
-      </div>
-      <% } %>  
-    </div>
+      <% } %>
 
       <script>
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
