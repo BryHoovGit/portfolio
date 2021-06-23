@@ -1,17 +1,15 @@
 <% layout('layout/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/stars.css">
-
+<link rel="stylesheet" href="/stylesheets/show.css">
     
     <div class="row">
-        
-        <% if(!currentUser) { %> 
-        <div class="col-6 offset-3">
-            <h1>Show Design</h1>
-            <% } %> 
-            <% if(currentUser) { %> 
+            <% if(currentUser || design.reviews.length > 0 ) { %> 
                 <h1>Show Design</h1>
                 <div class="col-6">
-                    <% } %> 
+                <% } else { %> 
+                    <div class="col-6 offset-3">
+                    <h1>Show Design</h1>
+                <% } %> 
             <div id="designCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <% design.images.forEach((img, i)=> { %>
@@ -92,7 +90,8 @@
                 </form>
                 <% } %>
                 <% for(let review of design.reviews) { %>
-                    <div class="card mb-3 ">
+                    
+                    <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title"> <%= review.author.username%></h5>
                             <p class="starability-result" data-rating="<%=review.rating%>">
