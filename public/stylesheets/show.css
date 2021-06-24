@@ -83,6 +83,7 @@ a {
 
 h2 {
     color: white;
+    
 }
 
 label {
@@ -135,4 +136,16 @@ h5, h6, p, .card-footer {
 
 li.list-group-item {
     background:none;
+}
+
+#logged-in-review {
+    margin-top: -.6rem;
+}
+
+#review-container {
+    width: 100%;
+}
+
+#photo-review-container {
+    width: 50%;
 }

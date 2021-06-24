@@ -132,3 +132,14 @@ h1 {
 #design-button {
     margin-left: 2.9rem;
 }
+
+#commercial-button {
+   margin-left: 26.3rem;
+   background-color: #131313;
+   border: none;
+}
+
+#commission-button {
+    background-color:#131313;
+    border: none;
+}

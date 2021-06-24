@@ -28,7 +28,9 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">
+                        
                         <%= photo.title%>
+                        
                     </h5>
                     <p class="card-text">
                         <%= photo.description%>
@@ -41,19 +43,24 @@
                 </ul>
                 <% if(currentUser && photo.author.equals(currentUser._id)) { %>
                     <div class="card-body">
+                        <a id="photo-button" href="/photography" class="btn btn-primary">Return</a>
                         <a class="card-link btn btn-info" href="/photography/<%=photo._id%>/edit">Edit</a>
                         <form class="d-inline" action="/photography/<%=photo._id%>?_method=DELETE" method="POST">
                             <button class="btn btn-danger">Delete</button>
                         </form>
                     </div>
-                    <% } %>
+                    <% } else { %>
+                        <div class="card-body">
+                            <a id="photo-button" href="/photography" class="btn btn-primary">Photos</a>
+                        </div>
+                    <% } %> 
                         <div class="card-footer">
                             Uploaded by <%= photo.author.username %> 
                         </div>
             </div>
         </div>
             <div class="col-6">
-                <div id='map' style='width: 100%; height: 300px;'></div>
+                <div class="mb-3" id='map' style='width: 100%; height: 300px;'></div>
                 <% if(currentUser){ %>
                 <h2>Leave a Review</h2>
                 <form action="/photography/<%= photo._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>
@@ -81,20 +88,30 @@
                     <button class="btn btn-success">Submit</button>
                 </form>
                 <% } %>
-                <% for(let review of photo.reviews) { %>
-                    <div class="card mb-3 ">
-                        <div class="card-body">
-                            <h5 class="card-title"> <%= review.author.username%></h5>
-                            <p class="starability-result" data-rating="<%=review.rating%>">
-                                Rated: <%= review.rating %> stars
-                            </p>
-                            <h6 class="card-subtitle mb-2">By <%= review.author.username%></h6>
-                            <p class="card-text">Review: <%= review.body %></p>
-                            <%  if( currentUser && review.author.equals(currentUser._id))  {%>
-                            <form action="/photography/<%=photo._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                                <button class="btn btn-sm btn-danger">Delete</button>
-                            </form>
-                            <% } %>
+                <div class="container">
+                    <div class="d-flex flex-row flex-wrap">
+                        <% for(let review of photo.reviews) { %>
+                          <div class="card mb-1" id="photo-review-container"> 
+                            <div class="row">
+                            <div class="col-6 mb-3">
+                            <div class="card-body" id="review-body">
+                                <h5 class="card-title"> <%= review.author.username%></h5>
+                                <p class="starability-result" data-rating="<%=review.rating%>">
+                                    Rated: <%= review.rating %> stars
+                                </p>
+                                <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6>
+                                <p class="card-text">Review: <%= review.body %></p>
+                                <%  if( currentUser && review.author.equals(currentUser._id))  {%>
+                                <form action="/photography/<%=photo._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </form>      
+                            </div>      
+                            </div>
+                            </div>
+                          </div>
+                        <% } %>       
+                    </div>
+                </div>
                         </div>
                     </div>
                     <% } %>
@@ -107,3 +124,5 @@
             </script>
 
     <script src="/javascripts/showPageMap.js"></script>
+
+    

@@ -1,6 +1,8 @@
 <% layout('layout/boilerplate')%>
-<link rel="stylesheet" href="/stylesheets/design.css">
+<link rel="stylesheet" href="/stylesheets/design.css">        
 <h1>Graphic Design</h1>
+<a id="commercial-button" href="/designs/commercial" class="btn btn-lg btn-primary mb-3">Commercial Designs</a>
+<a id="commission-button" href="/designs/commissions" class="btn btn-lg btn-primary mb-3">Commissioned Designs</a>
 <% if(currentUser && currentUser._id == "60d294755bcdbf2c28ce125d") {%>
 <a id="design-button" href="/designs/new" class="btn btn-primary mb-3">New Design</a>
 <% } %> 
@@ -40,3 +42,5 @@
     <% } %>
     </div>
     </div>
+    <a id="commercial-button" href="/designs/commercial" class="btn btn-lg btn-primary mb-3">Commercial Designs</a>
+    <a id="commission-button" href="/designs/commissions" class="btn btn-lg btn-primary mb-3">Commissioned Designs</a>
