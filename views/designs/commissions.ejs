@@ -1,22 +1,48 @@
 <% layout('layout/boilerplate')%>
 
-    <h1>Commissions Index</h1>
+<link rel="stylesheet" href="/stylesheets/design.css">   
+     
+<h1>Commissioned Designs</h1>
+<a id="all-designs-button" href="/designs" class="btn btn-lg btn-primary mb-3">All Designs</a>
+<% if(currentUser && currentUser._id == "60d294755bcdbf2c28ce125d") {%>
+<a id="design-button" href="/designs/new" class="btn btn-primary mb-3">New Design</a>
+<% } %> 
+
+
+<div class="container">
+    <div class="d-flex flex-row justify-content-evenly flex-wrap">
 
 <% for(let design of designs){ %>
     <% if(design.category == 'Commission') { %> 
     <div class="card mb-3">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-12 mb-3">
+                <%if(design.images.length) {%>
+                    <img class="img-fluid" alt="" src="<%=design.images[0].url%>">
+                    <% }else {%>
+                    <img class="img-fluid" alt=""
+                        src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
+                    <% } %>
+                </div>
+                <div class="col-6">
                 <div class="card-body">
-                    <h5 class="card-title"><%= design.name %></h5>
-                    <p class="card-text"><%= design.description %></p>
+                    <h5 class="card-title">
+                        <%= design.name %>
+                    </h5>
                     <p class="card-text">
-                        <small class="text-muted"><%= design.author %></small>
+                        <%= design.description %>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <%= design.author %>
+                        </small>
                     </p>
                     <a href="/designs/<%= design._id %>" class="btn btn-primary">View <%= design.name %></a>
                 </div>
             </div>
         </div>
     </div>
-    <% } %> 
-    <% } %>  
+    <% } %>
+    <% } %>
+    </div>
+    </div>

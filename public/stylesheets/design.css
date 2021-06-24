@@ -143,3 +143,12 @@ h1 {
     background-color:#131313;
     border: none;
 }
+
+.btn-primary {
+    background-color:#282828;
+    border: none;
+}
+
+#all-designs-button {
+    margin-left: 36rem;
+}

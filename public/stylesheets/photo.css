@@ -122,3 +122,8 @@ h1 {
 #photo-button {
     margin-left: 13.5rem;
 }
+
+.btn-primary {
+    background-color:#282828;
+    border: none;
+}

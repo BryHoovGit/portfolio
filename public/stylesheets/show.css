@@ -149,3 +149,8 @@ li.list-group-item {
 #photo-review-container {
     width: 50%;
 }
+
+.btn-primary {
+    background-color:#282828;
+    border: none;
+}

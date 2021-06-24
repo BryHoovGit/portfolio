@@ -109,3 +109,8 @@ h1 {
 .dropdown-item {
     color: white;
 }
+
+.btn-primary {
+    background-color:#282828;
+    border: none;
+}
