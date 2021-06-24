@@ -35,8 +35,8 @@
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-muted">
-                        <%= photo.location%>
+                    <li class="list-group-item">
+                        <p><%= photo.location%></p>
                     </li>
                 </ul>
                 <% if(currentUser && photo.author.equals(currentUser._id)) { %>
@@ -47,7 +47,7 @@
                         </form>
                     </div>
                     <% } %>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer">
                             Uploaded by <%= photo.author.username %> 
                         </div>
             </div>
@@ -88,7 +88,7 @@
                             <p class="starability-result" data-rating="<%=review.rating%>">
                                 Rated: <%= review.rating %> stars
                             </p>
-                            <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6>
+                            <h6 class="card-subtitle mb-2">By <%= review.author.username%></h6>
                             <p class="card-text">Review: <%= review.body %></p>
                             <%  if( currentUser && review.author.equals(currentUser._id))  {%>
                             <form action="/photography/<%=photo._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">

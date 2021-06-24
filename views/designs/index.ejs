@@ -2,12 +2,16 @@
 <link rel="stylesheet" href="/stylesheets/design.css">
 <h1>Graphic Design</h1>
 <% if(currentUser && currentUser._id == "60d294755bcdbf2c28ce125d") {%>
-<a href="/designs/new" class="btn btn-primary mb-3">New Design</a>
+<a id="design-button" href="/designs/new" class="btn btn-primary mb-3">New Design</a>
 <% } %> 
+
+<div class="container">
+    <div class="d-flex flex-row justify-content-evenly flex-wrap">
+
 <% for(let design of designs){ %>
     <div class="card mb-3">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-12 mb-3">
                 <%if(design.images.length) {%>
                     <img class="img-fluid" alt="" src="<%=design.images[0].url%>">
                     <% }else {%>
@@ -15,7 +19,7 @@
                         src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
                     <% } %>
                 </div>
-                <div class="col-md-8">
+                <div class="col-6">
                 <div class="card-body">
                     <h5 class="card-title">
                         <%= design.name %>
@@ -34,3 +38,5 @@
         </div>
     </div>
     <% } %>
+    </div>
+    </div>
