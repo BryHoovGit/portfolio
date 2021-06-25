@@ -75,4 +75,3 @@ module.exports.deleteDesign = async (req, res) => {
     req.flash('success', 'Sucessfully deleted design');
     res.redirect('/designs');
 };
-

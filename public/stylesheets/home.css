@@ -114,3 +114,7 @@ h1 {
     background-color:#282828;
     border: none;
 }
+
+h3, h5, h6, p, b, i, li {
+    color: white;
+}
