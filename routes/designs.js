@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const catchAsync = require('../utils/catchAsync');
 const designs = require('../controllers/designs');
-const { validateDesign, isLoggedIn, isDesignAuthor, storageSelect } = require('../middleware');
+const { validateDesign, isLoggedIn, isDesignAuthor } = require('../middleware');
 const multer = require('multer');
 const { designStorage } = require('../cloudinary')
 

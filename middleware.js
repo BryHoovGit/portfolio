@@ -1,9 +1,10 @@
-const { photoSchema, resumeSchema, designSchema, reviewSchema } = require('./schemas');
+const { photoSchema, resumeSchema, designSchema, reviewSchema, contactSchema } = require('./schemas');
 const ExpressError = require('./utils/ExpressError');
 const Resume = require('./models/resume');
 const Photo = require('./models/photo');
 const Design = require('./models/design');
 const Review = require('./models/review');
+const Contact = require('./models/contact');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -86,6 +87,26 @@ module.exports.isReviewAuthor = async (req, res, next) => {
 
 module.exports.validateReview = (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);
+    if(error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.isContactAuthor = async(req, res, next) => {
+    const { id } = req.params;
+    const contact = await Contact.findById(id);
+    if(!contact.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/contact/${id}`);
+    }
+    next();
+}
+
+module.exports.validateContact = (req, res, next) => {
+    const { error } = contactSchema.validate(req.body);
     if(error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)

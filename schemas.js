@@ -33,3 +33,12 @@ module.exports.reviewSchema = Joi.object({
         body: Joi.string().required()
     }).required()
 })
+
+module.exports.contactSchema = Joi.object({
+    resume: Joi.object({
+        name: Joi.string().required(),
+        phoneNumber: Joi.number(),
+        email: Joi.string().email(),
+        message: Joi.string().required()
+    }).required()
+});

@@ -2,6 +2,9 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
+const multiparty = require('multiparty');
+const nodemailer = require('nodemailer');
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -13,6 +16,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user')
+const Contact = require('./models/contact');
 
 const userRoutes = require('./routes/users')
 const resumeRoutes = require('./routes/resumes');
@@ -81,9 +85,65 @@ app.use('/photography', photoRoutes);
 app.use('/designs', designRoutes);
 app.use('/designs/:id/reviews', designReviewRoutes);
 app.use('/photography/:id/reviews', photoReviewRoutes);
+// app.use('/contact', contactRoutes);
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASS,
+    },
+  });
+
+  
+transporter.verify(function (error, success) {
+if (error) {
+    console.log(error);
+} else {
+    console.log("Server is ready to take our messages");
+}
+});
 
 app.get('/', (req, res) => {
     res.render('home');
+});
+
+app.get('/contact', async(req, res) => {
+    const contacts = await Contact.find({});
+    res.render('contact', { contacts });
+});
+
+app.post('/contact/send', async (req, res, next) => {
+    const contact = new Contact(req.body.contact);
+    contact.author = req.user._id;
+    await contact.save();
+    let form = new multiparty.Form();
+    let data = {};
+    form.parse(req, function (err, fields) {
+        console.log(fields);
+        Object.keys(fields).forEach(function (property) {
+            data[property] = fields[property].toString();
+        });
+        const mail = {
+            from: contact.name,
+            to: process.env.EMAIL,
+            email: contact.email,
+            phoneNumber: contact.phoneNumber,
+            message: contact.message
+        };
+      
+        transporter.sendMail(mail, (err, data) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send('Something went wrong.');
+            } else {
+                res.status(200).send('Contact email sent!')
+            }
+        });
+        req.flash('success', 'Sucessfully sent contact request!');
+        res.redirect('/');
+    });
 });
 
 app.get('/resume', (req, res) => {
