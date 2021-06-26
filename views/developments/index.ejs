@@ -1,0 +1,45 @@
+<% layout('layout/boilerplate')%>
+
+<link rel="stylesheet" href="/stylesheets/dev.css">
+
+<h1>Web Development</h1>
+
+<% if(currentUser && currentUser._id == "60d294755bcdbf2c28ce125d") {%>
+<a id="development-button" href="/development/new" class="btn btn-primary mb-3">New Project</a>
+<% } %> 
+
+<div class="container">
+    <div class="d-flex flex-row justify-content-evenly flex-wrap">
+
+<% for(let developments of development){ %>
+    <div class="card mb-3">
+        <div class="row">
+            <div class="col-12 mb-3">
+                <%if(developments.images.length) {%>
+                    <img class="img-fluid" alt="" src="<%=developments.images[0].url%>">
+                    <% }else {%>
+                    <img class="img-fluid" alt=""
+                        src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
+                    <% } %>
+                </div>
+                <div class="col-6">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= developments.title %>
+                    </h5>
+                    <p class="card-text">
+                        <%= developments.description %>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <%= developments.author %>
+                        </small>
+                    </p>
+                    <a href="/development/<%= developments._id %>" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    </div>
+    </div>

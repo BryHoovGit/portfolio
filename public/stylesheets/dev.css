@@ -1,7 +1,7 @@
 body {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("https://images.unsplash.com/photo-1613864601020-ec7288d0a9db?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
     background-size: cover;
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.1);
@@ -75,6 +75,15 @@ a {
     padding-left: 3rem;
 }
 
+h1 {
+    color: white;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+    font-size: 4rem;
+}
+
 #footer-container {
     margin-right: 1.2rem;
     padding-left: 5rem;
@@ -96,12 +105,22 @@ h1 {
 #social-logos {
     padding-left: 2rem; 
     margin-left: 1rem;
-    
 }
 
 #footer-sub-text {
     color: white;
 }
+
+.card {
+    background: rgba(255, 255, 255, 1);
+    background-color: #181818;
+    width: 30%;
+}
+
+.card-text {
+    color: white;
+}
+
 .dropdown-menu {
     background-color: #181818;
 }
@@ -110,17 +129,26 @@ h1 {
     color: white;
 }
 
+#design-button {
+    margin-left: 2.9rem;
+}
+
+#commercial-button {
+   margin-left: 26.3rem;
+   background-color: #131313;
+   border: none;
+}
+
+#commission-button {
+    background-color:#131313;
+    border: none;
+}
+
 .btn-primary {
     background-color:#282828;
     border: none;
 }
 
-h3, h5, h6, p, b, i, li {
-    color: white;
-}
-
-.alert {
-    background: none;
-    border: none; 
-    margin-top: 5rem;
+#all-designs-button {
+    margin-left: 36rem;
 }

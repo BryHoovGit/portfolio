@@ -1,0 +1,63 @@
+<% layout('layout/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/show.css">
+
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1><%= development.title %></h1>
+                <div class="card mb-3">
+                    <div id="developmentCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <% development.images.forEach((img, i)=> { %>
+                                <div class="carousel-item <%=i === 0 ? 'active' : ''%>">
+                                    <img src="<%= img.url %>" class="d-block w-100" alt="">
+                                </div>
+                            <% }) %>
+                        </div>
+                        <% if(development.images.length > 1) { %>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#developmentCarousel"
+                            data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#developmentCarousel"
+                            data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        <% } %>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= development.title%>
+                        </h5>
+                        <p class="card-text">
+                            <%= development.description%>
+                        </p>
+                        <p class="card-text text-muted">
+                            <%= development.gitUrl%>
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-muted">
+                            <%= development.date%>
+                        </li>
+                    </ul>
+                    <% if(currentUser && development.author.equals(currentUser._id)) { %>
+                        <div class="card-body">
+                            <a class="card-link btn btn-info" href="/development/<%=development._id%>/edit">Edit</a>
+                            <form class="d-inline" action="/development/<%=development._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        <% } else { %>
+                            <div class="card-body">
+                                <a id="development-button" href="/development" class="btn btn-primary">All Projects</a>
+                            </div>
+                    <% } %> 
+                        <div class="card-footer text-muted">
+                            <%= development.author.username %>
+                        </div>
+                </div>        
+        </div>
+    </div>

@@ -15,11 +15,11 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user')
 
 const userRoutes = require('./routes/users')
-const resumeRoutes = require('./routes/resumes');
+const developmentRoutes = require('./routes/developments');
 const photoRoutes = require('./routes/photos');
 const designRoutes = require('./routes/designs');
 const photoReviewRoutes = require('./routes/photoReviews');
-const designReviewRoutes = require('./routes/designRoutes');
+const designReviewRoutes = require('./routes/designReviewRoutes');
 const contactRoutes = require('./routes/contacts');
 
 mongoose.connect('mongodb://localhost:27017/portfolio', {
@@ -77,7 +77,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', userRoutes)
-app.use('/resumes', resumeRoutes);
+app.use('/development', developmentRoutes);
 app.use('/photography', photoRoutes);
 app.use('/designs', designRoutes);
 app.use('/designs/:id/reviews', designReviewRoutes);
@@ -89,7 +89,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/resume', (req, res) => {
-    res.render('resumes/myResume')
+    res.render('myResume')
 });
 
 app.all('*', (req, res, next) => {

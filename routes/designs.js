@@ -26,7 +26,7 @@ router.get('/new', isLoggedIn, designs.renderNewForm)
 
 router.route('/:id')
     .get(catchAsync(designs.showDesign))
-    .put(isLoggedIn, isDesignAuthor, validateDesign, catchAsync(designs.updateDesign))
+    .put(isLoggedIn, isDesignAuthor, upload.array('image'), validateDesign, catchAsync(designs.updateDesign))
     .delete(isLoggedIn, isDesignAuthor, catchAsync(designs.deleteDesign))
 
 router.get('/:id/edit', isLoggedIn, isDesignAuthor, catchAsync(designs.renderEditForm))

@@ -8,7 +8,8 @@ const ContactSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    subject: String,
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);

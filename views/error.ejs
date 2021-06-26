@@ -1,10 +1,14 @@
 <% layout('layout/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/home.css">
 
 <div class="row">
-    <div class="col-6 offset-3">
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading"><%= err.message %> </h4>
-            <p><%= err.stack %> </p>
+    <div class="col-6 offset-3 text-center">
+        <div class="alert alert-primary" role="alert">
+            <h1><%= `Uh-oh! ${err.statusCode}, ${err.message}! ` %> </h1>
         </div>
+        <h3>If you're here, it's because we don't know where you're trying to go.</h3>
+        <br>
+        <h5>If you believe this was an error, please feel free to submit a report via the <a href="/contact">Contact Me</a> page.</h5>
     </div>
 </div>
+

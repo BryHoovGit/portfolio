@@ -23,8 +23,17 @@ const photographyStorage = new CloudinaryStorage({
     }
 });
 
+const webDevStorage = new CloudinaryStorage({
+    cloudinary,
+    params: {
+        folder: 'WebDev',
+        allowedFormats: ['jpeg', 'png', 'jpg']
+    }
+});
+
 module.exports = {
     cloudinary,
     designStorage,
-    photographyStorage
+    photographyStorage,
+    webDevStorage
 }

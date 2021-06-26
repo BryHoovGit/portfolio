@@ -1,11 +1,14 @@
 const Joi = require('joi');
 
-module.exports.resumeSchema = Joi.object({
-    resume: Joi.object({
-        name: Joi.string().required(),
-        phoneNumber: Joi.number().required(),
-        email: Joi.string().email().required(),
-    }).required()
+module.exports.developmentSchema = Joi.object({
+    development: Joi.object({
+        title: Joi.string().required(),
+        description: Joi.string().required(),
+        date: Joi.date().required(),
+        gitUrl: Joi.string(),
+        projectUrl: Joi.string()
+    }).required(),
+    deleteImages: Joi.array()
 });
 
 module.exports.photoSchema = Joi.object({
@@ -39,6 +42,7 @@ module.exports.contactSchema = Joi.object({
         name: Joi.string().required(),
         phoneNumber: Joi.number(),
         email: Joi.string().email(),
-        message: Joi.string().required()
+        message: Joi.string().required(),
+        subject: Joi.string().required()
     }).required()
 });

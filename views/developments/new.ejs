@@ -1,0 +1,49 @@
+<% layout('layout/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/show.css">
+
+<h1>New Web Development Project</h1>
+    <form action="/development" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="title" class="form-label">Project Title</label>
+          <input type="text" class="form-control" id="title"  name="development[title]" aria-describedby="titleHelp">
+        </div>
+        <div class="valid-feedback">
+          Looks good!
+      </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Project Description</label>
+            <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" name="development[description]">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" aria-describedby="dateHelp" name="development[date]">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+          <label for="gitUrl">GitHub Repo URL</label>
+          <input type="url" class="form-control" id="gitUrl" name="development[gitUrl]" aria-describedby="urlHelp">
+        </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="mb-3">
+          <label for="projectUrl">Project URL</label>
+          <input type="url" class="form-control" id="projectUrl" name="development[projectUrl]" aria-describedby="urlHelp">
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Add Preview Image</label>
+          <input class="form-control" type="file" id="image" multiple name="image">
+      </div>
+      <div class="valid-feedback">
+        Looks good!
+    </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      
+      

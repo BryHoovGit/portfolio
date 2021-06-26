@@ -1,6 +1,6 @@
-const { photoSchema, resumeSchema, designSchema, reviewSchema, contactSchema } = require('./schemas');
+const { photoSchema, developmentSchema, designSchema, reviewSchema, contactSchema } = require('./schemas');
 const ExpressError = require('./utils/ExpressError');
-const Resume = require('./models/resume');
+const Development = require('./models/development');
 const Photo = require('./models/photo');
 const Design = require('./models/design');
 const Review = require('./models/review');
@@ -15,24 +15,24 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
-module.exports.validateResume = (req, res, next) => {
-    const { error } = resumeSchema.validate(req.body);
+module.exports.isAuthor = async(req, res, next) => {
+    const { id } = req.params;
+    const development = await Development.findById(id);
+    if(!development.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/development/${id}`);
+    }
+    next();
+}
+
+module.exports.validateDevelopment = (req, res, next) => {
+    const { error } = developmentSchema.validate(req.body);
     if(error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
     } else {
         next();
     }
-}
-
-module.exports.isAuthor = async(req, res, next) => {
-    const { id } = req.params;
-    const resume = await Resume.findById(id);
-    if(!resume.author.equals(req.user._id)) {
-        req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/resumes/${id}`);
-    }
-    next();
 }
 
 module.exports.isPhotoAuthor = async(req, res, next) => {
