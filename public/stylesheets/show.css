@@ -154,3 +154,7 @@ li.list-group-item {
     background-color:#282828;
     border: none;
 }
+
+.btn-secondary {
+    color: white;
+}
