@@ -10,6 +10,7 @@ const ContactSchema = new Schema({
         ref: 'User'
     },
     subject: String,
+    message: String,
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);

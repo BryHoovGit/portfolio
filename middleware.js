@@ -105,7 +105,7 @@ module.exports.isContactAuthor = async(req, res, next) => {
     next();
 }
 
-module.exports.validateContact = (req, res, next) => {
+module.exports.validateContact = async(req, res, next) => {
     const { error } = contactSchema.validate(req.body);
     if(error) {
         const msg = error.details.map(el => el.message).join(',')

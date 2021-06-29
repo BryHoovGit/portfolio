@@ -82,6 +82,7 @@ a {
 
 #social-logos {
     padding-left: 1rem; 
+    justify-content: center;
 }
 
 h1 {

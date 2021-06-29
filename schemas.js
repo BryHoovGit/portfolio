@@ -34,15 +34,15 @@ module.exports.reviewSchema = Joi.object({
     review: Joi.object({
         rating: Joi.number().required().min(1).max(5),
         body: Joi.string().required()
-    }).required()
-})
+    }).required(),
+});
 
 module.exports.contactSchema = Joi.object({
-    resume: Joi.object({
-        name: Joi.string().required(),
+    contact: Joi.object({
+        name: Joi.string(),
         phoneNumber: Joi.number(),
         email: Joi.string().email(),
-        message: Joi.string().required(),
-        subject: Joi.string().required()
-    }).required()
+        subject: Joi.string(),
+        message: Joi.string()
+    }).required(),
 });

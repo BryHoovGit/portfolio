@@ -17,8 +17,8 @@ const User = require('./models/user')
 const userRoutes = require('./routes/users')
 const developmentRoutes = require('./routes/developments');
 const photoRoutes = require('./routes/photos');
-const designRoutes = require('./routes/designs');
 const photoReviewRoutes = require('./routes/photoReviews');
+const designRoutes = require('./routes/designs');
 const designReviewRoutes = require('./routes/designReviewRoutes');
 const contactRoutes = require('./routes/contacts');
 

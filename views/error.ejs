@@ -6,6 +6,7 @@
         <div class="alert alert-primary" role="alert">
             <h1><%= `Uh-oh! ${err.statusCode}, ${err.message}! ` %> </h1>
         </div>
+        <p><%= err.stack %></p>
         <h3>If you're here, it's because we don't know where you're trying to go.</h3>
         <br>
         <h5>If you believe this was an error, please feel free to submit a report via the <a href="/contact">Contact Me</a> page.</h5>

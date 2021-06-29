@@ -23,7 +23,7 @@ module.exports.showDevelopment = async (req, res) => {
     const development = await Development.findById(req.params.id).populate('author');
     if(!development) {
         req.flash('error', 'Cannot find that project!');
-        return res.redirect('/developments');
+        return res.redirect('/development');
     }
     res.render('developments/show', { development });
 };
@@ -32,8 +32,8 @@ module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
     const development = await Development.findById(id);
     if (!development) {
-        req.flash('error', 'Canot find that resumé!');
-        return res.redirect('/developments');
+        req.flash('error', 'Canot find that project');
+        return res.redirect('/development');
     }
     res.render('developments/edit', { development });
 };
