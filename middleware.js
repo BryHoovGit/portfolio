@@ -5,6 +5,7 @@ const Photo = require('./models/photo');
 const Design = require('./models/design');
 const Review = require('./models/review');
 const Contact = require('./models/contact');
+const User = require('./models/user')
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -21,6 +22,18 @@ module.exports.isAuthor = async(req, res, next) => {
     if(!development.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
         return res.redirect(`/development/${id}`);
+    }
+    next();
+}
+
+module.exports.isAdmin = async(req, res, next) => {
+    if(!req.user) {
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect('/');
+    }
+    if(req.user.role !== 'Admin') {
+        req.flash('error', 'You need admin level access to do that!');
+        return res.redirect('/');
     }
     next();
 }
