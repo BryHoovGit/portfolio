@@ -125,3 +125,15 @@ h3, h5, h6, p, b, i, li {
     border: none; 
     margin-top: 5rem;
 }
+
+#success-flash {
+    background:rgba(111, 255, 130, 0.3);
+    color: #f8f9fa;
+    border: none;
+}
+
+#error-flash {
+    background: rgba(255, 72, 72, 0.3);
+    color: #f8f9fa;
+    border: none;
+}

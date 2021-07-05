@@ -1,5 +1,5 @@
 const express = require('express');
-const router =express();
+const router = express();
 const catchAsync = require('../utils/catchAsync');
 const contacts = require('../controllers/contacts');
 const { validateContact, isLoggedIn, isContactAuthor, isAdmin } = require('../middleware');
@@ -7,10 +7,10 @@ const { validateContact, isLoggedIn, isContactAuthor, isAdmin } = require('../mi
 const Contact = require('../models/contact');
 
 router.route('/')
-    .get(contacts.renderNewForm)
+    .get(isLoggedIn, catchAsync(contacts.index))
     .post(isLoggedIn, validateContact, catchAsync(contacts.createContact))
 
-router.get('/view', isLoggedIn, catchAsync(contacts.index))
+router.get('/new', isLoggedIn, contacts.renderNewForm)
 
 router.route('/:id')
     .get(isLoggedIn, isContactAuthor, catchAsync(contacts.showContact))

@@ -39,10 +39,9 @@ module.exports.reviewSchema = Joi.object({
 
 module.exports.contactSchema = Joi.object({
     contact: Joi.object({
-        name: Joi.string(),
-        phoneNumber: Joi.number(),
-        email: Joi.string().email(),
-        subject: Joi.string(),
-        message: Joi.string()
+        phone: Joi.string().min(10).max(14).pattern(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/).required(),
+        email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'gov', 'edu'] } }).required(),
+        subject: Joi.string().required().max(41),
+        message: Joi.string().required()
     }).required(),
 });

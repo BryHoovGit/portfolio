@@ -16,6 +16,26 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+module.exports.isContactAuthor = async(req, res, next) => {
+    const { id } = req.params;
+    const contact = await Contact.findById(id);
+    if (!contact.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/contact/${id}`)
+    }
+    next();
+}
+
+module.exports.validateContact = (req, res, next) => {
+    const { error } = contactSchema.validate(req.body);
+    if(error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
 module.exports.isAuthor = async(req, res, next) => {
     const { id } = req.params;
     const development = await Development.findById(id);
@@ -100,26 +120,6 @@ module.exports.isReviewAuthor = async (req, res, next) => {
 
 module.exports.validateReview = (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);
-    if(error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
-
-module.exports.isContactAuthor = async(req, res, next) => {
-    const { id } = req.params;
-    const contact = await Contact.findById(id);
-    if(!contact.author.equals(req.user._id)) {
-        req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/contact/${id}`);
-    }
-    next();
-}
-
-module.exports.validateContact = async(req, res, next) => {
-    const { error } = contactSchema.validate(req.body);
     if(error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)

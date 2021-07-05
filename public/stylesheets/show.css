@@ -158,3 +158,15 @@ li.list-group-item {
 .btn-secondary {
     color: white;
 }
+
+#success-flash {
+    background:rgba(111, 255, 130, 0.3);
+    color: #f8f9fa;
+    border: none;
+}
+
+#error-flash {
+    background: rgba(255, 72, 72, 0.3);
+    color: #f8f9fa;
+    border: none;
+}

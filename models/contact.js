@@ -2,15 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ContactSchema = new Schema({
-    name: String,
-    phoneNumber: Number,
+    phone: String,
     email: String,
+    subject: String,
+    message: String,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
-    subject: String,
-    message: String,
+    }
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);
+
+
+

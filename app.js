@@ -20,7 +20,7 @@ const photoRoutes = require('./routes/photos');
 const photoReviewRoutes = require('./routes/photoReviews');
 const designRoutes = require('./routes/designs');
 const designReviewRoutes = require('./routes/designReviewRoutes');
-const contactRoutes = require('./routes/contacts');
+const contactRoutes = require('./routes/contacts')
 
 mongoose.connect('mongodb://localhost:27017/portfolio', {
     useNewUrlParser: true,

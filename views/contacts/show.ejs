@@ -1,42 +1,36 @@
 <% layout('layout/boilerplate')%>
-<link rel="stylesheet" href="/stylesheets/show.css">        
-<h1><%= `${contact.name}'s contact request` %> </h1>
+<link rel="stylesheet" href="/stylesheets/show.css">
 
-<div class="container">
-    <div class="d-flex flex-row justify-content-evenly flex-wrap">
-       
-    <div class="card mb-3">
-        <div class="row">
-            <div class="col-12 mb-3">
-                <div class="card mb-3">
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1><%= contact.author.username %>'s Contact Request</h1>
                     <div class="card-body">
                         <h5 class="card-title">
-                            <%= contact.name%>
+                            <%= contact.subject%>
                         </h5>
-                        <p class="card-text text-muted">
-                            <%= contact.phoneNumber%>
-                        </p>
-                        <h6 class="card-subtitle">
-                            <%= contact.subject %> 
-                        </h6>
                         <p class="card-text">
                             <%= contact.message%>
                         </p>
                         <p class="card-text text-muted">
-                            <%= contact.phoneNumber%>
+                            <%= contact.email%>
+                        </p>
+                        <p class="card-text text-muted">
+                            <%= contact.phone%>
                         </p>
                     </div>
                     <% if(currentUser && contact.author.equals(currentUser._id)) { %>
-                        <div class="card-body">  
+                        <div class="card-body">
                             <a class="card-link btn btn-info" href="/contact/<%=contact._id%>/edit">Edit</a>
                             <form class="d-inline" action="/contact/<%=contact._id%>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                         </div>
-                        <% } %>
-                </div> 
-            </div>
+                        <% } else { %>
+                            <div class="card-body">
+                                <a id="contact-button" href="/contact" class="btn btn-primary">All Projects</a>
+                            </div>
+                    <% } %> 
+                </div>        
         </div>
-    </div>
-    </div>
     </div>

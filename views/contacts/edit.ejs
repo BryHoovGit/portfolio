@@ -1,45 +1,38 @@
 <% layout('layout/boilerplate')%>
-<link rel="stylesheet" href="/stylesheets/contact.css">
+<link rel="stylesheet" href="/stylesheets/show.css">
 
-    <h1>Edit Contact Request</h1>
-    <form action="/contact" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
+<h1>New Contact Request</h1>
+    <form action="/contact" novalidate method="POST" class="validated-form">
         <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input value="<%= contact.name %> " type="text" class="form-control" id="name"  name="contact[name]" aria-describedby="nameHelp">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input value="<%= contact.phone %>" type="tel" class="form-control" id="phone"  name="contact[phone]" aria-describedby="phoneHelp">
+        </div>
+        <div class="valid-feedback">
+          Looks good!
+      </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input value="<%= contact.email %>" type="text" class="form-control" id="email" aria-describedby="emailHelp" name="contact[email]">
+          </div>
           <div class="valid-feedback">
             Looks good!
         </div>
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input value="<%= contact.subject %>" type="text" class="form-control" id="subject" aria-describedby="subjectHelp" name="contact[subject]">
+          </div>
+          <div class="valid-feedback">
+            Looks good!
         </div>
         <div class="mb-3">
-            <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input value="<%= contact.phoneNumber %> " type="tel" class="form-control" id="phoneNumber" aria-describedby="nameHelp" name="contact[phoneNumber]" placeholder="(555)-555-5555">
-            <div class="valid-feedback">
-              Looks good!
-          </div>
-            <div id="nameHelp" class="form-text">We'll never share your info with anyone else.</div>
-          </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input value="<%= contact.email %> " type="email" class="form-control" id="email" aria-describedby="emailHelp" name="contact[email]">
-            <div class="valid-feedback">
-              Looks good!
-          </div>
-            <div id="nameHelp" class="form-text">We'll never share your info with anyone else.</div>
-          </div>
-          <br>
-          <div class="mb-3">
-            <label for="subject" class="form-label">Subject</label>
-            <input value="<%= contact.subject %> " type="text" class="form-control" id="subject" aria-describedby="subjectHelp" name="contact[subject]">
-            <div class="valid-feedback">
-              Looks good!
-          </div>
-          </div>
-          <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea value="<%= contact.message %> " class="form-control" placeholder="Type your message here." name="contact[message]" id="message" style="height: 100px"></textarea>
-              <div class="valid-feedback">
-                Looks good!
-            </div>
-          </div>
-        <button value="submit" type="submit" class="btn btn-primary">Submit</button>
+          <label for="message">Message</label>
+          <textarea value="<%= contact.message %>" class="form-control" name="contact[message]" id="message" cols="30" rows="5"></textarea>
+        </div>
+          <div class="valid-feedback">
+            Looks good!
+        </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+
+      
+      

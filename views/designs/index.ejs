@@ -8,7 +8,7 @@
 <% } %> 
 
 
-<% if(currentUser && currentUser._id == "60d294755bcdbf2c28ce125d") {%>
+<% if(currentUser && currentUser._id == process.env.ADMIN_ID) {%>
 <a id="design-button" href="/designs/new" class="btn btn-primary mb-3">New Design</a>
 <% } %> 
 
