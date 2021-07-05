@@ -7,16 +7,16 @@ const { validateContact, isLoggedIn, isContactAuthor, isAdmin } = require('../mi
 const Contact = require('../models/contact');
 
 router.route('/')
-    .get(isLoggedIn, catchAsync(contacts.index))
+    .get(isLoggedIn, isAdmin, catchAsync(contacts.index))
     .post(isLoggedIn, validateContact, catchAsync(contacts.createContact))
 
-router.get('/new', isLoggedIn, contacts.renderNewForm)
+router.get('/new', contacts.renderNewForm)
 
 router.route('/:id')
-    .get(isLoggedIn, isContactAuthor, catchAsync(contacts.showContact))
-    .put(isLoggedIn, isContactAuthor, validateContact, catchAsync(contacts.updateContact))
-    .delete(isLoggedIn, isContactAuthor, catchAsync(contacts.deleteContact))
+    .get(isLoggedIn, isAdmin, catchAsync(contacts.showContact))
+    .put(isLoggedIn, isAdmin, validateContact,  catchAsync(contacts.updateContact))
+    .delete(isLoggedIn, isAdmin, catchAsync(contacts.deleteContact))
 
-router.get('/:id/edit', isLoggedIn, isContactAuthor, catchAsync(contacts.renderEditForm))
+router.get('/:id/edit', isLoggedIn, isAdmin, catchAsync(contacts.renderEditForm))
 
 module.exports = router;

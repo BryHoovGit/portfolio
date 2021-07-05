@@ -14,7 +14,7 @@ module.exports.createContact = async (req, res, next) => {
     contact.author = req.user._id;
     await contact.save();
     req.flash('success', 'Successfully created a new contact request!');
-    res.redirect(`/contact/${contact._id}`);
+    res.redirect('/');
 };
 
 module.exports.showContact = async (req, res) => {

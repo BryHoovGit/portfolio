@@ -269,3 +269,7 @@ li.list-group-item {
     color: #f8f9fa;
     border: none;
 }
+
+.btn-md, .btn-md:hover{
+    cursor: default;
+}
