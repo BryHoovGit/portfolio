@@ -1,32 +1,50 @@
 <% layout('layout/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/show.css">
 
-<h1>New Contact Request</h1>
+<div id="new-container" class="col-12 mb-5">
+  <div class="row">
+    <div class="col-6">
+    <h1 class="new-contact">Edit Contact Request</h1>
+  </div>
+  <div class="col-6">
+      <div id="contact-info" class="text-muted">
+          <h5>Bryce Hoover</h5>
+          <h5>Houston, TX</h5>
+          <h5>(816) 777-1662</h5>
+          <h5>bryhoover11@gmail.com</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <form action="/contact" novalidate method="POST" class="validated-form">
-        <div class="mb-3">
+      <div class="row">
+        <div class="mb-3 col-6">
           <label for="phone" class="form-label">Phone Number</label>
-          <input value="<%= contact.phone %>" type="tel" class="form-control" id="phone"  name="contact[phone]" aria-describedby="phoneHelp">
+          <input type="tel" class="form-control" id="phone"  name="contact[phone]" aria-describedby="phoneHelp" value="<%= contact.phone %> ">
         </div>
         <div class="valid-feedback">
           Looks good!
       </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
             <label for="email" class="form-label">Email</label>
-            <input value="<%= contact.email %>" type="text" class="form-control" id="email" aria-describedby="emailHelp" name="contact[email]">
+            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" name="contact[email]" value="<%= contact.email %> ">
           </div>
           <div class="valid-feedback">
             Looks good!
         </div>
+      </div>
         <div class="mb-3">
             <label for="subject" class="form-label">Subject</label>
-            <input value="<%= contact.subject %>" type="text" class="form-control" id="subject" aria-describedby="subjectHelp" name="contact[subject]">
+            <input type="text" class="form-control" id="subject" aria-describedby="subjectHelp" name="contact[subject]" value="<%= contact.subject %> ">
           </div>
           <div class="valid-feedback">
             Looks good!
         </div>
         <div class="mb-3">
           <label for="message">Message</label>
-          <textarea value="<%= contact.message %>" class="form-control" name="contact[message]" id="message" cols="30" rows="7"></textarea>
+          <textarea class="form-control" name="contact[message]" id="message" cols="30" rows="7" value=""><%= contact.message %></textarea>
         </div>
           <div class="valid-feedback">
             Looks good!

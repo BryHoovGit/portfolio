@@ -19,7 +19,7 @@
                             <%= contact.phone%>
                         </p>
                     </div>
-                    <% if(currentUser && contact.author.equals(currentUser._id)) { %>
+                    <% if(currentUser && currentUser._id == process.env.ADMIN_ID) { %>
                         <div class="card-body">
                             <a class="card-link btn btn-info" href="/contact/<%=contact._id%>/edit">Edit</a>
                             <form class="d-inline" action="/contact/<%=contact._id%>?_method=DELETE" method="POST">
