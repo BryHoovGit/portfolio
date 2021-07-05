@@ -23,9 +23,12 @@ const photoRoutes = require('./routes/photos');
 const photoReviewRoutes = require('./routes/photoReviews');
 const designRoutes = require('./routes/designs');
 const designReviewRoutes = require('./routes/designReviewRoutes');
-const contactRoutes = require('./routes/contacts')
+const contactRoutes = require('./routes/contacts');
 
-mongoose.connect('mongodb://localhost:27017/portfolio', {
+const MongoStore = require("connect-mongo");
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/portfolio';
+
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -49,9 +52,24 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
 
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret,
+    },
+    touchAfter: 24 * 60 * 60
+});
+
+store.on('error', function(e){
+    console.log('SESSION STORE ERROR', e)
+});
+
 const sessionConfig = {
+    store,
     name: 'sesid',
-    secret: 'thisshouldbeabettersecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
