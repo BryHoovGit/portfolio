@@ -27,6 +27,9 @@ const PhotoSchema = new Schema({
             required: true
         }
     },
+    date: {
+        type: Date, default: Date.now
+    },
     description: String,
     location: String,
     author: {

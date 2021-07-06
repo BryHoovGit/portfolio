@@ -38,6 +38,7 @@ module.exports.photoSchema = Joi.object({
     photo: Joi.object({
         title: Joi.string().required().escapeHTML(),
         description: Joi.string().required().escapeHTML(),
+        date: Joi.date().required(),
         location: Joi.string().required().escapeHTML()
     }).required(),
     deleteImages: Joi.array()
