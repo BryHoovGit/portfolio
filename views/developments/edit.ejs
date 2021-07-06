@@ -2,7 +2,7 @@
 
 <h1>Edit <%= development.title %> </h1>
 <link rel="stylesheet" href="/stylesheets/show.css">
-    <form action="/development" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
+    <form action="/development/<%=development._id%>?_method=PUT" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="title" class="form-label">Project Title</label>
           <input type="text" class="form-control" id="title"  name="development[title]" aria-describedby="titleHelp" value="<%= development.title %>" >
@@ -26,10 +26,14 @@
         </div>
         <div class="mb-3">
           <label for="url">GitHub Repo URL</label>
-          <input type="url" class="form-control" id="url" name="development[url]" aria-describedby="urlHelp" value="<%= development.url %>">
+          <input type="url" class="form-control" id="url" name="development[gitUrl]" aria-describedby="urlHelp" value="<%= development.gitUrl %>">
         </div>
           <div class="valid-feedback">
             Looks good!
+        </div>
+        <div class="mb-3">
+          <label for="projectUrl">Project URL</label>
+          <input type="url" class="form-control" id="projectUrl" name="development[projectUrl]" aria-describedby="urlHelp" value="<%= development.projectUrl %>">
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Add Preview Image</label>

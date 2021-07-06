@@ -164,3 +164,8 @@ h1 {
     color: #f8f9fa;
     border: none;
 }
+
+h5 {
+    color: white;
+    padding-bottom: 1rem;
+}

@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="/stylesheets/dev.css">
 
-<h1>Web Development</h1>
+<h1>Projects</h1>
 
 <% if(currentUser && currentUser._id == process.env.ADMIN_ID) {%>
 <a id="development-button" href="/development/new" class="btn btn-primary mb-3">New Project</a>
@@ -22,7 +22,7 @@
                         src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
                     <% } %>
                 </div>
-                <div class="col-6">
+                <div class="col-12">
                 <div class="card-body">
                     <h5 class="card-title">
                         <%= developments.title %>
@@ -36,6 +36,8 @@
                         </small>
                     </p>
                     <a href="/development/<%= developments._id %>" class="btn btn-primary">View</a>
+                    <a href="<%= development.projectUrl %>" class="btn btn-primary">View Site</a>
+                            <a href="<%= development.gitUrl %>" class="btn btn-primary">View Repo</a>
                 </div>
             </div>
         </div>

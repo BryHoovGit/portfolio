@@ -1,7 +1,7 @@
 <% layout('layout/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/show.css">
 <h1>Edit Design</h1>
-    <form action="/designs" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
+    <form action="/designs/<%=design._id%>?_method=PUT" novalidate method="POST" class="validated-form" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="title" class="form-label">Design Title</label>
           <input type="text" class="form-control" id="title"  name="design[title]" value="<%= design.title %>" aria-describedby="titleHelp">

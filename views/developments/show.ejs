@@ -4,7 +4,6 @@
 
     <div class="row">
         <div class="col-6 offset-3">
-            <h1><%= development.title %></h1>
                 <div class="card mb-3">
                     <div id="developmentCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -27,15 +26,18 @@
                             </button>
                         <% } %>
                     </div>
+                    <div class="col-12 mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h2 class="card-title">
                             <%= development.title%>
-                        </h5>
+                        </h2>
                         <p class="card-text">
                             <%= development.description%>
                         </p>
                         <p class="card-text text-muted">
-                            <%= development.gitUrl%>
+                            <a href="/development" class="btn btn-info btn-sm">All Projects</a>
+                            <a href="<%= development.projectUrl %>" class="btn btn-sm btn-success">View Site</a>
+                            <a href="<%= development.gitUrl %>" class="btn btn-sm btn-secondary">View Repo</a>
                         </p>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -50,12 +52,9 @@
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                         </div>
-                        <% } else { %>
-                            <div class="card-body">
-                                <a id="development-button" href="/development" class="btn btn-primary">All Projects</a>
-                            </div>
-                    <% } %> 
+                        <% } %>
                     <div class="card-footer text-muted">&copy; Bryce Hoover</div>
-                </div>        
+                </div>
+            </div>        
         </div>
     </div>
