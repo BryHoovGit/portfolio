@@ -30,15 +30,11 @@
                     <p class="card-text">
                         <%= developments.description %>
                     </p>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            <%= developments.author %>
-                        </small>
-                    </p>
                     <a href="/development/<%= developments._id %>" class="btn btn-primary">View</a>
                     <a href="<%= development.projectUrl %>" class="btn btn-primary">View Site</a>
                             <a href="<%= development.gitUrl %>" class="btn btn-primary">View Repo</a>
                 </div>
+                <div class="card-footer text-muted">&copy; Bryce Hoover</div>
             </div>
         </div>
     </div>
