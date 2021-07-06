@@ -42,7 +42,10 @@ body {
 }
 
 #headshot {
-    margin-top: 13rem;
+    margin-top: 15rem;
+    max-width: 100%;
+    padding-left: 10rem;
+    margin-left: 3rem;
 }
 
 a {
@@ -136,4 +139,8 @@ h3, h5, h6, p, b, i, li {
     background: rgba(255, 72, 72, 0.3);
     color: #f8f9fa;
     border: none;
+}
+
+img.img-fluid {
+    border-radius: 5%;
 }
