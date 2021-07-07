@@ -42,7 +42,18 @@
       <div class="valid-feedback">
         Looks good!
     </div>
+    <div class="mb-3">
+      <% development.images.forEach(function(img, i) {  %>
+      <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
+      <div class="form-check-inline">
+          <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+      </div>
+      <label for="image-<%=i%>">Delete?</label>
+      <% })%>
+  </div>
+  <div class="mb-3">
           <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </form>
 
       
