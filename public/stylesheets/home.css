@@ -29,3 +29,13 @@ img.img-fluid {
   font-size: 6rem;
   padding-bottom: 1rem;
 }
+
+#splash-text {
+    color: white;
+    margin-top: 16rem;
+    justify-content: center;
+}
+  
+#headshot {
+    margin-top: 13rem;
+}
