@@ -1,34 +1,38 @@
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
 }
 
 .card {
-    background: rgba(255, 255, 255, 1);
-    background-color: #181818;
-    width: 30%;
+  background: rgba(255, 255, 255, 1);
+  background-color: #181818;
+  width: 30%;
 }
 
 #design-button {
-    margin-left: 2.9rem;
+  margin-left: 2.9rem;
 }
 
 #commercial-button {
-   margin-left: 26.3rem;
-   background-color: #131313;
-   border: none;
+  margin-left: 26.3rem;
+  background-color: #131313;
+  border: none;
 }
 
 #commission-button {
-    background-color:#131313;
-    border: none;
+  background-color: #131313;
+  border: none;
 }
 
 #all-designs-button {
-    margin-left: 36rem;
+  margin-left: 36rem;
 }
 
 h5 {
-    color: white;
-    padding-bottom: 1rem;
+  color: white;
+  padding-bottom: 1rem;
+}
+
+span {
+  float: right;
 }
