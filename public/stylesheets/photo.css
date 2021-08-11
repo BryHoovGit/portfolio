@@ -7,8 +7,27 @@ body {
   background: rgba(255, 255, 255, 1);
   background-color: #181818;
   width: 33%;
+  justify-content: center;
+}
+
+.card-img-overlay {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #photo-button {
   margin-left: 13.5rem;
+}
+
+#copyright {
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: -0.8rem;
+  margin-right: -0.6rem;
+}
+
+#shot-info {
+  margin-top: -0.8rem;
+  margin-left: -0.4rem;
 }
