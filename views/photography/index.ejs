@@ -4,47 +4,36 @@
 <% if(currentUser && currentUser._id == process.env.ADMIN_ID) {%>
   <a id="photo-button" href="/photography/new" class="btn btn-primary mb-2">New Photo</a>
   <% } %> 
-<div id="map" style="width:60%; height: 350px" class="mb-3 offset-2"></div>
-<h1>Photography</h1>
+  <h1>Photography</h1>
+<div id="map" style="width:84%; height: 250px" class="mb-5 offset-1"></div>
+
     
     
-    <div class="container">
-    <div class="d-flex flex-row justify-content-evenly flex-wrap">
+<div class="container">
+  <div class="d-flex flex-row justify-content-evenly flex-wrap">
       
       
        
     <% for(let photo of photos){ %>
-      <div class="card mb-3">
-          <div class="row">
-            <div class="col-12 mb-3">            
-                <%if(photo.images.length) {%>
-                    <img class="img-fluid" alt="" src="<%=photo.images[0].url%>">
-                    <% }else {%>
-                    <img class="img-fluid" alt=""
-                        src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
-                    <% } %>
-              </div>
-              <div class="col-6 mb-3">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <%= photo.name %>
-                  </h5>
-                <p class="card-text">
-                  <%= photo.description %>
-                </p>
-                <p class="card-text">
-                    <small class="text-muted">
-                      <%= photo.author %>
-                    </small>
-                </p>
-                <a href="/photography/<%= photo._id %>" class="btn btn-primary">View <%= photo.name %></a>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="card bg-dark text-white mb-3">
+        <%if(photo.images.length) {%>
+          <img class="img-fluid" alt="" src="<%=photo.images[0].url%>">
+          <% }else {%>
+          <img class="img-fluid" alt=""
+              src="https://res.cloudinary.com/bryce-test-env/image/upload/v1622741040/YelpCamp/ktm7ywhmm54fdhxu4gax.jpg">
+          <% } %>
+          <a href="/photography/<%= photo._id %>">
+        <div class="card-img-overlay">
+          <h6 id="shot-info" class="card-title"><%= photo.description %></h6>
+          <p id="copyright" class="small card-text">&copy; Bryce Hoover</p>
+        </div>
+        </a>
+      </div>
       <% } %> 
-    </div>
+
+
   </div>
+</div>
   
 
       <script>

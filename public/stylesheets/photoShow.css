@@ -1,0 +1,100 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-color: #181818;
+}
+
+h2 {
+  color: white;
+}
+
+label {
+  color: white;
+}
+
+.card {
+  background: rgba(255, 255, 255, 1);
+  background-color: #181818;
+  width: 100%;
+}
+
+h5,
+h6,
+p,
+.card-footer {
+  color: white;
+}
+
+li.list-group-item {
+  background: none;
+}
+
+#logged-in-review {
+  margin-top: -0.6rem;
+}
+
+#review-container {
+  width: 100%;
+}
+
+#photo-review-container {
+  width: 45%;
+  margin: 1rem;
+}
+
+.btn-secondary {
+  color: white;
+}
+
+#contact-info h5 {
+  text-align: end;
+}
+
+.new-contact {
+  text-align: end;
+}
+
+#new-container {
+  margin-top: 5rem;
+}
+
+h3 {
+  color: white;
+}
+
+h1 {
+  display: none;
+}
+
+.card-img-overlay {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#shot-info,
+h6 p {
+  font-style: italic;
+  font-weight: 600;
+}
+
+#shot-location {
+  justify-self: flex-end;
+  font-style: italic;
+  font-weight: 600;
+}
+
+#copyright {
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-bottom: -0.7rem;
+  margin-right: -0.5rem;
+  font-style: italic;
+}
+
+#photo-button {
+  align-self: flex-end;
+  margin-bottom: auto;
+  margin-top: -4.7rem;
+  margin-right: -0.5rem;
+}

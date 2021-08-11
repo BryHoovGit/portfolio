@@ -3,7 +3,7 @@ const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [-103.59179687498357, 40.66995747013945],
-    zoom: 3
+    zoom: 2
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -18,8 +18,8 @@ map.on('load', function () {
         // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
         data: photos,
         cluster: true,
-        clusterMaxZoom: 14, // Max zoom to cluster points on
-        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+        clusterMaxZoom: 11, // Max zoom to cluster points on
+        clusterRadius: 10 // Radius of each cluster when clustering points (defaults to 50)
     });
 
     map.addLayer({
