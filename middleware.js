@@ -52,7 +52,7 @@ module.exports.isAdmin = async(req, res, next) => {
         return res.redirect('/');
     }
     if(req.user.role !== 'Admin') {
-        req.flash('error', 'You need admin level access to do that!');
+        req.flash('error', 'You do not have permission to do that!');
         return res.redirect('/');
     }
     next();
